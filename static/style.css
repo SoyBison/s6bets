@@ -1,0 +1,13 @@
+input.email-entry{
+    direction: rtl;
+}
+.container{
+    display: flex;
+    width: 1000px
+}
+.container.space-around{
+    justify-content: space-around;
+}
+.container.space-between{
+    justify-content: space-between;
+}

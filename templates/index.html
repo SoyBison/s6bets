@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Distribution for 300 LAF Stage 6</title>
+    <link rel=stylesheet href="../static/style.css">
+</head>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="../static/balls.js"></script>
+<body>
+<form id="main_form" action="{{ url_for('add_record') }}" method="post">
+    <label for="email">
+       Email:
+    </label>
+    <input type="text" class="email-entry" id="email" name="email" required>
+    <label for='email'>
+        @microsoft.com
+    </label>
+    <br><br>
+    <label for="lo">Earliest Date</label>
+    <input type="date" id="lo" name="lo">
+    <label for="hi">Latest Date</label>
+    <input type="date" id="hi" name="hi">
+    <br><br>
+    <div id="contain-div" hidden>
+        <div class="container space-around">
+            <div id="balls-used" style="display: inline">You have used X balls</div>
+            <div id="balls-left" style="text-align: right; display: inline">You have XXX balls remaining.</div>
+        </div>
+        <div id="target-div">
+        </div>
+        <div class="container space-around">
+            <div id="b1">
+                <button type='button' id="m1">-</button> <button type='button' id="p1">+</button>
+            </div>
+            <div id="b2">
+                <button type='button' id="m2">-</button> <button type='button' id="p2">+</button>
+            </div>
+            <div id="b3">
+                <button type='button' id="m3">-</button> <button type='button' id="p3">+</button>
+            </div>
+            <div id="b4">
+                <button type='button' id="m4">-</button> <button type='button' id="p4">+</button>
+            </div>
+            <div id="b5">
+                <button type='button' id="m5">-</button> <button type='button' id="p5">+</button>
+            </div>
+            <div id="b6">
+                <button type='button' id="m6">-</button> <button type='button' id="p6">+</button>
+            </div>
+            <div id="b7">
+                <button type='button' id="m7">-</button> <button type='button' id="p7">+</button>
+            </div>
+            <div id="b8">
+                <button type='button' id="m8">-</button> <button type='button' id="p8">+</button>
+            </div>
+            <div id="b9">
+                <button type='button' id="m9">-</button> <button type='button' id="p9">+</button>
+            </div>
+        </div>
+        <input type="submit" value="Submit">
+    </div>
+</form>
+</body>
+</html>
