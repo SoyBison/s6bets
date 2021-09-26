@@ -11,7 +11,7 @@ $(document).ready(function(){
         let lo = $('#lo').val()
         data.fill(0)
         ballsUsed = 0
-        if (hi !== null && lo !== null){
+        if (hi !== "" && lo !== ""){
             let fdate = Date.parse(lo)
             let ldate = Date.parse(hi)
             for(let i = 0; i < 9; i++){
