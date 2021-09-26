@@ -13,7 +13,6 @@ db = SQLAlchemy(app)
 class DataPoint(db.Model):
     __tablename__ = 'data'
     email = db.Column(db.String, primary_key=True)
-    b0 = db.Column(db.Integer)
     b1 = db.Column(db.Integer)
     b2 = db.Column(db.Integer)
     b3 = db.Column(db.Integer)

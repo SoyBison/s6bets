@@ -6,6 +6,12 @@ $(document).ready(function(){
     var data = Array(9).fill(0);
     let darray = Array(9)
     let yScale, xScale, svg, dnum
+
+    // Hidden form registers for the balls
+    for(let i = 1; i <= 9; i++){
+        $('#main_form').append(`<input type="hidden" name="b${i}" id="b${i}-form">`)
+    }
+
     $('#hi, #lo').change(function (){
         let hi = $('#hi').val()
         let lo = $('#lo').val()
@@ -103,6 +109,8 @@ $(document).ready(function(){
         let buttonId = $(this).attr('id')
         let kind = buttonId.charAt(0)
         let i = parseInt(buttonId.charAt(1))
+        // Probably better to do a check and reject then to check and reset afterwards
+        // Better to beg for forgiveness than ask for permission I always say
         if (kind === 'p'){
             data[i - 1] ++
             ballsUsed ++
@@ -128,6 +136,9 @@ $(document).ready(function(){
             $('#balls-left').text('You have ' + (nBalls - ballsUsed) + ' ball remaining.')
         } else {
             $('#balls-left').text('You have ' + (nBalls - ballsUsed) + ' balls remaining.')
+        }
+        for(let i = 1; i <= 9; i++){
+            $(`#b${i}-form`).val(data[i - 1])
         }
         yScale.domain([0, d3.max(data)])
         svg.selectAll('rect')
