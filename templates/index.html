@@ -9,24 +9,35 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="../static/balls.js"></script>
 <body>
-<p>Thank you for your prediction of when 300 Lafayette will be officially in Stage 6. This survey is to both gain some wisdom of the crowds, and for everyone's engagement</p>
+<p>Thank you for your prediction of when 300 Lafayette will be officially in Stage 6. This survey is to both gain some wisdom of the crowds, and for everyone's engagement.</p>
 <p>Please do not forward to outside of the MSR-NYC organization.</p>
-<p>Our crowd-sourced estimate is the average of those distributions (which we will highlight at next week's Tea Talk, so all entries are due by 11:59 PM ET on Wednesday 9/23)</p>
-<p>In order to ensure that no one wins by just putting all of their weight in a narrow band, we do not show the raw scores! Instead, we will determine how much probability you have in range of the opening day +/- 3 days (so the full week around opening day).
-Then you get as many lottery tickets as (Prob * 100) ^ 2. (e.g., if you had 12 percentage points in the space you would get 144 tickets). The person with the winning ticket gets their name flashed on stage for a future Thursday Tea Talk (in the Stage 6 open 300 Lafayette).</p>
+<p>Basically, we are asking you to create an early and late date of when Stage 6 may happen, then distribute 100 guesses within that range. These guesses each represent 1 percentage of probability for a given band of days.</p>
+<p> This Thursday we will present the crowd-sourced probability distribution of when 300 Lafayette will reach Stage 6 (so get your submissions in by 11:59 ET on Wednesday 9/29). Then, when Stage 6 is reached, we will declare a "winner" of the contest.
+    We will give each participant a number of tickets correlated with how much weight they put on the eventual outcome.* Then, we will draw a ticket live during a Thursday Tea Talk (presumably in the fully reopened 300 Lafayette!)
+</p>
 <form id="main_form" action="{{ url_for('add_record') }}" method="post">
-    <label for="email">
-       Email:
-    </label>
-    <input type="text" class="email-entry" id="email" name="email" required>
-    <label for='email'>
-        @microsoft.com
-    </label>
+    <div class="container space-around">
+        <div>
+            <label for="email">
+                Email:
+            </label>
+            <input type="text" class="email-entry" id="email" name="email" required>
+            <label for='email'>
+                @microsoft.com
+            </label>
+        </div>
+    </div>
     <br><br>
-    <label for="lo">Earliest Date</label>
-    <input type="date" id="lo" name="lo">
-    <label for="hi">Latest Date</label>
-    <input type="date" id="hi" name="hi">
+    <div class="container space-around">
+        <div>
+            <label for="lo">Earliest Date</label>
+            <input type="date" id="lo" name="lo">
+        </div>
+        <div>
+            <label for="hi">Latest Date</label>
+            <input type="date" id="hi" name="hi">
+        </div>
+    </div>
     <br><br>
     <div id="contain-div" hidden>
         <div class="container space-around">
@@ -64,8 +75,12 @@ Then you get as many lottery tickets as (Prob * 100) ^ 2. (e.g., if you had 12 p
                 <button type='button' id="m9">-</button> <button type='button' id="p9">+</button>
             </div>
         </div>
-        <input type="submit" value="Submit">
+        <br>
+        <div class="container space-around">
+        <input type="submit" value="Submit" style="alignment: center">
+        </div>
     </div>
 </form>
+<p>Technically your probability of "winning" will be a function of the distance between your square error and the average square error.</p>
 </body>
 </html>

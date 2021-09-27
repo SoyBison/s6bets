@@ -49,8 +49,8 @@ $(document).ready(function(){
                 dnum2 = fdate + ((ldate - fdate) * (i+1)) / 9
                 darray[i] = dateFormat(dnum, dnum2)
             }
-            $('#balls-used').text('You have used 0 balls.')
-            $('#balls-left').text('You have ' + nBalls + ' balls remaining.')
+            $('#balls-used').text('You have used 0 guesses.')
+            $('#balls-left').text('You have ' + nBalls + ' guesses remaining.')
 
             $('svg').remove()
 
@@ -152,15 +152,15 @@ $(document).ready(function(){
             }
         }
         if (ballsUsed === 1) {
-            $('#balls-used').text('You have used ' + ballsUsed + ' ball.')
+            $('#balls-used').text('You have used ' + ballsUsed + ' guess.')
         } else {
-            $('#balls-used').text('You have used ' + ballsUsed + ' balls.')
+            $('#balls-used').text('You have used ' + ballsUsed + ' guesses.')
         }
 
         if (nBalls - ballsUsed === 1) {
-            $('#balls-left').text('You have ' + (nBalls - ballsUsed) + ' ball remaining.')
+            $('#balls-left').text('You have ' + (nBalls - ballsUsed) + ' guess remaining.')
         } else {
-            $('#balls-left').text('You have ' + (nBalls - ballsUsed) + ' balls remaining.')
+            $('#balls-left').text('You have ' + (nBalls - ballsUsed) + ' guesses remaining.')
         }
         for(let i = 1; i <= 9; i++){
             $(`#b${i}-form`).val(data[i - 1])
