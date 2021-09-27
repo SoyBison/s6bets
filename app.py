@@ -38,8 +38,10 @@ def index():
 def add_record():
     email = request.form['email']
     existing_dp = DataPoint.query.filter_by(email=email).first()
+    print(existing_dp.b5)
     if existing_dp is not None:
         db.session.delete(existing_dp)
+        db.session.commit()
     data = {
         'b1': int(request.form['b1']),
         'b2': int(request.form['b2']),
