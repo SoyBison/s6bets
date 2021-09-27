@@ -6,6 +6,7 @@ $(document).ready(function(){
     var ballsUsed = 0
     var data = Array(9).fill(0);
     let darray = Array(9)
+    let divisions = Array(nBalls - 1).fill(0);
     let yScale, xScale, svg, dnum, dnum2
 
     let dtToday = new Date();
@@ -87,6 +88,17 @@ $(document).ready(function(){
                 //    placeholder color
                 });
 
+            svg.selectAll('line')
+                .data(divisions)
+                .enter()
+                .append('line')
+                .style('stroke', 'white')
+                .style('stroke-width', 2)
+                .attr('x1', 0)
+                .attr('x2', w)
+                .attr('y1', h)
+                .attr('y2', h)
+
 			svg.selectAll("text")
 			   .data(data)
 			   .enter()
@@ -165,12 +177,18 @@ $(document).ready(function(){
         for(let i = 1; i <= 9; i++){
             $(`#b${i}-form`).val(data[i - 1])
         }
+
+        divisions.fill(0)
+        for(let i = 0; i < d3.max(data); i++){
+            divisions[d3.max(data) - i] = i
+        }
+
         yScale.domain([0, d3.max(data)])
         svg.selectAll('rect')
             .data(data)
             .transition()
             .duration(500)
-            .ease(d3.easeBounceOut)
+            .ease(d3.easeExpOut)
             .attr('y', function(d){
                 return height - yScale(d);
             })
@@ -181,10 +199,24 @@ $(document).ready(function(){
                 return 'rgb(0,0,0)';
             })
 
+        svg.selectAll('line')
+            .data(divisions)
+            .transition()
+            .ease(d3.easeExpOut)
+            .duration(500)
+            .attr('x1', 0)
+            .attr('x2', w)
+            .attr('y1', function (d){
+                return height - yScale(d)
+            })
+            .attr('y2', function (d){
+                return height - yScale(d)
+            })
+
         svg.selectAll('text')
             .data(data)
             .transition()
-            .ease(d3.easeBounceOut)
+            .ease(d3.easeExpOut)
             .duration(500)
             .text(function(d){
                 return d;
