@@ -8,6 +8,21 @@ $(document).ready(function(){
     let darray = Array(9)
     let yScale, xScale, svg, dnum, dnum2
 
+    let dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    let minDate = year + '-' + month + '-' + day;
+    $('#hi').attr('min', minDate)
+    $('#lo').attr('min', minDate)
+
     function dateFormat(dt1, dt2){
         let d1 = new Date(dt1)
         let d2 = new Date(dt2 - 24 * 60 * 60 * 1000)
