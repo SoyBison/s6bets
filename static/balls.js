@@ -112,7 +112,7 @@ $(document).ready(function(){
 			   })
 				.attr("y", function(d) {
                     if(yScale(d)<=45) {
-                        return height - yScale(d) - 2;
+                        return height - yScale(d) - 1;
                     }else{
                         return height - yScale(d) + 14;
                     }
