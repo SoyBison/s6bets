@@ -1,5 +1,6 @@
 $(document).ready(function(){
     const h = 400
+    const height = h - 30
     const w = 1000
     var nBalls = 100
     var ballsUsed = 0
@@ -9,7 +10,7 @@ $(document).ready(function(){
 
     function dateFormat(dt1, dt2){
         let d1 = new Date(dt1)
-        let d2 = new Date(dt2)
+        let d2 = new Date(dt2 - 24 * 60 * 60 * 1000)
         let ds1 = d1.toLocaleString('default', {month: 'short', timeZone: 'UTC'}) + ' ' + d1.getUTCDate()
         let ds2 = d2.toLocaleString('default', {month: 'short', timeZone: 'UTC'}) + ' ' + d2.getUTCDate()
         return ds1 + ' - ' + ds2
@@ -50,7 +51,7 @@ $(document).ready(function(){
 
             yScale = d3.scaleLinear()
                 .domain([0, d3.max(data)])
-                .range([0, h - 35]);
+                .range([0, h - 30])
 
             svg.selectAll('rect')
                 .data(data)
@@ -60,7 +61,7 @@ $(document).ready(function(){
                     return xScale(darray[i])
                 })
                 .attr('y', function(d){
-                    return h - yScale(d);
+                    return height - yScale(d) ;
                 })
                 .attr('width', xScale.bandwidth())
                 .attr('height', function(d){
@@ -83,16 +84,16 @@ $(document).ready(function(){
 			   		return xScale(darray[i]) + xScale.bandwidth()/2;
 			   })
 				.attr("y", function(d) {
-                    if(yScale(d)<=15) {
-                        return h - yScale(d) - 2;
+                    if(yScale(d)<=45) {
+                        return height - yScale(d) - 2;
                     }else{
-                        return h - yScale(d) + 14;
+                        return height - yScale(d) + 14;
                     }
                 })
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
 			   .attr("fill", function (d) {
-				   if(yScale(d)<=15){
+				   if(yScale(d)<=45){
 				       return "black"
 				   }else{
 				       return "white";
@@ -100,8 +101,8 @@ $(document).ready(function(){
                });
 
             svg.append('g')
-                .attr('transform', 'translate(' + 0 + ',' + 30 + ')')
-                .call(d3.axisTop(xScale))
+                .attr('transform', 'translate(' + 0 + ',' + 370 + ')')
+                .call(d3.axisBottom(xScale))
 
             if((ldate - fdate) <= 0) {
                 $('#contain-div').slideUp()
@@ -156,7 +157,7 @@ $(document).ready(function(){
             .duration(500)
             .ease(d3.easeBounceOut)
             .attr('y', function(d){
-                return h - yScale(d);
+                return height - yScale(d);
             })
             .attr('height', function(d){
                 return yScale(d);
@@ -178,9 +179,9 @@ $(document).ready(function(){
             })
             .attr("y", function(d) {
                 if(yScale(d)<=15) {
-                    return h - yScale(d) - 2;
+                    return height - yScale(d) - 2;
                 }else{
-                    return h - yScale(d) + 14;
+                    return height - yScale(d) + 14;
                 }
             })
             .attr("font-family", "sans-serif")

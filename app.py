@@ -3,7 +3,6 @@ from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL'].replace('postgres://', 'postgresql://')
 api = Api(app)

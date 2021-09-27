@@ -1,3 +1,4 @@
+DROP TABLE data;
 CREATE TABLE data (
 email varchar(255) UNIQUE NOT NULL,
 b1 int4 NOT NULL,
@@ -10,4 +11,5 @@ b7 int4 NOT NULL,
 b8 int4 NOT NULL,
 b9 int4 NOT NULL,
 lo varchar(255) NOT NULL,
-hi varchar(255) NOT NULL);
+hi varchar(255) NOT NULL,
+submit TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
