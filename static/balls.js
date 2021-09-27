@@ -5,7 +5,15 @@ $(document).ready(function(){
     var ballsUsed = 0
     var data = Array(9).fill(0);
     let darray = Array(9)
-    let yScale, xScale, svg, dnum
+    let yScale, xScale, svg, dnum, dnum2
+
+    function dateFormat(dt1, dt2){
+        let d1 = new Date(dt1)
+        let d2 = new Date(dt2)
+        let ds1 = d1.toLocaleString('default', {month: 'short', timeZone: 'UTC'}) + ' ' + d1.getUTCDate()
+        let ds2 = d2.toLocaleString('default', {month: 'short', timeZone: 'UTC'}) + ' ' + d2.getUTCDate()
+        return ds1 + ' - ' + ds2
+    }
 
     // Hidden form registers for the balls
     for(let i = 1; i <= 9; i++){
@@ -22,7 +30,8 @@ $(document).ready(function(){
             let ldate = Date.parse(hi)
             for(let i = 0; i < 9; i++){
                 dnum = fdate + ((ldate - fdate) * i) / 9
-                darray[i] = (new Date(dnum)).toDateString()
+                dnum2 = fdate + ((ldate - fdate) * (i+1)) / 9
+                darray[i] = dateFormat(dnum, dnum2)
             }
             $('#balls-used').text('You have used 0 balls.')
             $('#balls-left').text('You have ' + nBalls + ' balls remaining.')
