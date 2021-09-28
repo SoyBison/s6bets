@@ -1,7 +1,7 @@
 $(document).ready(function(){
     const h = 400
     const height = h - 30
-    const w = 1000
+    const w = 950
     var nBalls = 100
     var ballsUsed = 0
     var data = Array(9).fill(0);
