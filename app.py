@@ -23,6 +23,7 @@ class DataPoint(db.Model):
     b9 = db.Column(db.Integer)
     lo = db.Column(db.String)
     hi = db.Column(db.String)
+    best = db.Column(db.String)
 
     def __init__(self, email, **kwargs):
         self.email = email
@@ -34,11 +35,10 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/thanks', methods=['GET', 'POST'])
+@app.route('/bestguess', methods=['GET', 'POST'])
 def add_record():
     email = request.form['email']
     existing_dp = DataPoint.query.filter_by(email=email).first()
-    print(existing_dp.b5)
     if existing_dp is not None:
         db.session.delete(existing_dp)
         db.session.commit()
@@ -57,6 +57,15 @@ def add_record():
     }
     db.session.add(DataPoint(email, **data))
     db.session.commit()
+    return render_template('bestguess.html', email=email)
+
+@app.route('/thanks', methods=['GET', 'POST'])
+def append_opener():
+    email = request.form['email']
+    existing_dp = DataPoint.query.filter_by(email=email).first()
+    existing_dp.best = request.form['best']
+    db.session.commit()
+
     return render_template('thanks.html')
 
 

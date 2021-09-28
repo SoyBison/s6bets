@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Best Guess</title>
+    <link rel=stylesheet href="../static/style.css">
+</head>
+<body>
+<form action="{{ url_for('append_opener') }}" method="post">
+    <div class="container space-around">
+            <label for="best">If you had only one guess for the opening date, what would it be?</label>
+        <br>
+            <input id="best" name="best" type="date" min="2021-09-28">
+    </div>
+    <br>
+    <input type="hidden" name='email' value="{{email}}">
+    <div class="container space-around">
+    <input type="submit" value="Submit" style="alignment: center">
+    </div>
+</form>
+</body>
+</html>
