@@ -88,17 +88,17 @@ $(document).ready(function(){
                 //    placeholder color
                 });
 
-            svg.selectAll('line')
-                .data(divisions)
-                .enter()
-                .append('line')
-                .style('stroke', 'white')
-                .style('stroke-width', 2)
-                .attr('x1', 0)
-                .attr('x2', w)
-                .attr('y1', h)
-                .attr('y2', h)
-
+            // svg.selectAll('line')
+            //     .data(divisions)
+            //     .enter()
+            //     .append('line')
+            //     .style('stroke', 'white')
+            //     .style('stroke-width', 2)
+            //     .attr('x1', 0)
+            //     .attr('x2', w)
+            //     .attr('y1', h)
+            //     .attr('y2', h)
+            //
 			svg.selectAll("text")
 			   .data(data)
 			   .enter()
@@ -199,19 +199,19 @@ $(document).ready(function(){
                 return 'rgb(0,0,0)';
             })
 
-        svg.selectAll('line')
-            .data(divisions)
-            .transition()
-            .ease(d3.easeExpOut)
-            .duration(500)
-            .attr('x1', 0)
-            .attr('x2', w)
-            .attr('y1', function (d){
-                return height - yScale(d)
-            })
-            .attr('y2', function (d){
-                return height - yScale(d)
-            })
+        // svg.selectAll('line')
+        //     .data(divisions)
+        //     .transition()
+        //     .ease(d3.easeExpOut)
+        //     .duration(500)
+        //     .attr('x1', 0)
+        //     .attr('x2', w)
+        //     .attr('y1', function (d){
+        //         return height - yScale(d)
+        //     })
+        //     .attr('y2', function (d){
+        //         return height - yScale(d)
+        //     })
 
         svg.selectAll('text')
             .data(data)
