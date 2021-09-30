@@ -9,6 +9,7 @@ import os
 import datetime
 import wes
 
+wes.set_palette('Zissou1')
 
 DB = dataset.connect(os.environ['DATABASE_URL'].replace('postgres://', 'postgresql://'))
 
@@ -54,11 +55,11 @@ if __name__ == '__main__':
 
     finaldist = bigdf.mean(axis=1)
     mpl_date = DateFormatter("%Y-%m-%d")
-    smoothbrain = gaussian_filter1d(finaldist, sigma=2)
+    smoothbrain = gaussian_filter1d(finaldist, sigma=2.5)
     smoothbrain = pd.Series(index=finaldist.index, data=smoothbrain)
     fig, ax = plt.subplots(figsize=(16, 9))
-    sns.lineplot(data=finaldist)
-    sns.lineplot(data=smoothbrain)
+    ax.bar(finaldist.index, finaldist)
+    ax.plot(smoothbrain.index, smoothbrain, color='C2')
     ax.xaxis.set_major_formatter(mpl_date)
     ax.xaxis.set_major_locator(WeekdayLocator(interval=2))
     plt.xticks(rotation=45, ha='right')
