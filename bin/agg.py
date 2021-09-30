@@ -49,6 +49,8 @@ if __name__ == '__main__':
             datelist = list(pd.date_range(bin[0], bin[1]).values)
             persondatelist += datelist
             datedf += [row[f'b{i+1}']/len(datelist) for _ in datelist]
+        if sum(datedf) == 0:
+            continue
         datedf = list(map(lambda x: (x/sum(datedf)) * 100, datedf))
         datedf = pd.DataFrame(datedf, index=persondatelist, columns=[row['email']])
         bigdf.update(datedf)
